@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+*.log
+tmp/
+.idea/
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+my.plan
+*.out
