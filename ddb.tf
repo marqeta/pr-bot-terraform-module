@@ -73,3 +73,27 @@ resource "aws_dynamodb_table" "pr_reviews_lock_table" {
 
   tags = var.tags
 }
+
+resource "aws_dynamodb_table" "datastore_table" {
+  name         = "pr-bot-${var.environment}-datastore"
+  hash_key     = "pk"
+  range_key    = "sk"
+  billing_mode = "PAY_PER_REQUEST"
+
+  attribute {
+    name = "pk"
+    type = "S"
+  }
+
+  attribute {
+    name = "sk"
+    type = "S"
+  }
+
+  ttl {
+    attribute_name = "expire_at"
+    enabled        = true
+  }
+
+  tags = var.tags
+}

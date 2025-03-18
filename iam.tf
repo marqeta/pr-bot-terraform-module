@@ -121,6 +121,23 @@ data "aws_iam_policy_document" "ddb_policy" {
 
     effect = "Allow"
   }
+
+  statement {
+    actions = [
+      "dynamodb:Describe*",
+      "dynamodb:Get*",
+      "dynamodb:List*",
+      "dynamodb:Query",
+      "dynamodb:Scan",
+      "dynamodb:Delete*",
+      "dynamodb:Update*",
+      "dynamodb:PutItem"
+    ]
+
+    resources = [aws_dynamodb_table.datastore_table.arn]
+
+    effect = "Allow"
+  }
 }
 
 resource "aws_iam_policy" "ddb_policy" {
